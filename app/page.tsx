@@ -8,14 +8,62 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/modal";
+import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { useState } from "react";
+import { PassThrough } from "stream";
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [textTitle, setTextTitle] = useState("");
-  
+
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+    <section className="flex flex-col">
+      <div className="grid grid-cols-3 ">
+        <p className="p-5">Identificación sucursal</p>
+        <Input
+          type="text"
+          className="p-5 pt-1"
+          disabled={true}
+          value={"11.123.999"}
+        />
+        <Input
+          type="text"
+          className="p-5 pt-1"
+          disabled={true}
+          value={"sucursal prueba 1"}
+        />
+        <p className="p-5">Rut supervisor</p>
+        <Input
+          type="text"
+          className="p-5 pt-1"
+          disabled={true}
+          value={"19. 348.123-1"}
+        />
+        <Input
+          type="text"
+          className="p-5 pt-1"
+          disabled={true}
+          value={"Marcelo Ortiz"}
+        />
+      </div>
+      <div className="grid grid-cols-5 ">
+        <p className="p-5">Fecha movimiento</p>
+        <Input
+          type="text"
+          className="p-5 pt-1"
+          disabled={true}
+          value={"12/11/2024"}
+        />
+        <p className="p-5">Clave acceso</p>
+        <Input
+          type="text"
+          className="p-5 pt-1"
+          
+        />
+        <Button color="primary" variant="light"  className="p-5 ">
+          Cambiar clave
+        </Button>
+      </div>
       <div className="inline-block text-center justify-center p-4">
         <div className="grid grid-cols-5 gap-4">
           {[
