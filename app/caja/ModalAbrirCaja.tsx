@@ -19,7 +19,7 @@ import {
   TableCell,
 } from "@nextui-org/table";
 import { useState } from "react";
-import { FaEdit, FaTrash, FaSave } from "react-icons/fa";
+import { FaEdit, FaTrash, FaKey } from "react-icons/fa";
 
 export const cajeros = [
   { name: "Raul", rut: "11.111.510-4", key: "Raul" },
@@ -79,20 +79,28 @@ export default function ModalAbrirCaja({ isOpen, onClose }) {
                       disabled={true}
                       label={"Tesorero"}
                       type="text"
-                      value={"sucursal prueba 1"}
+                      value={"Marcelo"}
                     />
                     <Input
                       className="p-1"
                       disabled={true}
                       label={"Fecha"}
                       type="text"
-                      value={"sucursal prueba 1"}
+                      value={"12/12/2024"}
                     />
                   </div>
                 </Card>
-                <div className="grid grid-cols-2 gap-4">
-                  <Card className="w-full p-4" radius="lg">
-                    <p className="p-1 font-bold">Cajeros</p>
+                <div className="grid grid-cols-12 gap-4">
+                  <Card className="w-full p-4 col-span-7" radius="lg">
+                    <div className="grid grid-cols-6 gap-4 mb-2">
+                      <p className="p-3 font-bold col-start-1 col-end-3 ">
+                        Cajeros
+                      </p>
+                      <Button className="p-1 font-bold col-end-7 col-span-2">
+                        Agregar cajero
+                      </Button>
+                    </div>
+
                     <div className="">
                       <Table
                         isStriped
@@ -112,9 +120,9 @@ export default function ModalAbrirCaja({ isOpen, onClose }) {
                                 <TableCell>{item.name}</TableCell>
                                 <TableCell>
                                   <div className="grid grid-cols-3 gap-4">
-                                    <FaEdit />
-                                    <FaTrash />
-                                    <FaSave />
+                                    <FaEdit title="Editar cajero" />
+                                    <FaTrash title="Eliminar cajero" />
+                                    <FaKey title="Cambiar permisos cajero" />
                                   </div>
                                 </TableCell>
                               </TableRow>
@@ -124,7 +132,7 @@ export default function ModalAbrirCaja({ isOpen, onClose }) {
                       </Table>
                     </div>
                   </Card>
-                  <Card className="w-full p-4" radius="lg">
+                  <Card className="w-full p-4 col-span-5" radius="lg">
                     <p className="p-1 font-bold">Permisos cajero</p>
                     <div className="">
                       {/* <Autocomplete
