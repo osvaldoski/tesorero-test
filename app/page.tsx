@@ -1,27 +1,10 @@
 "use client";
 import { Card, CardBody } from "@nextui-org/card";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  useDisclosure,
-} from "@nextui-org/modal";
+import { useDisclosure } from "@nextui-org/modal";
 import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
-import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/table";
 import { useState } from "react";
+
 import ModalAbrirCaja from "./caja/ModalAbrirCaja";
-import { on } from "events";
 
 export const cajeros = [
   { name: "Raul", rut: "11.111.510-4", key: "Raul" },
@@ -109,7 +92,11 @@ export default function Home() {
               </Card>
             );
           })}
-          <ModalAbrirCaja isOpen={isOpen} onClose={onClose} />
+          <ModalAbrirCaja
+            isOpen={isOpen}
+            textTitle={textTitle}
+            onClose={onClose}
+          />
         </div>
       </div>
     </section>

@@ -22,11 +22,11 @@ import { useState } from "react";
 import { FaEdit, FaTrash, FaKey } from "react-icons/fa";
 
 export const cajeros = [
-  { name: "Raul", rut: "11.111.510-4", key: "Raul" },
-  { name: "Carlos", rut: "20.367.482-6", key: "Carlos" },
-  { name: "Pedro", rut: "12.387.560-9", key: "Pedro" },
-  { name: "Osvaldo", rut: "17.877.795-1", key: "Osvaldo" },
-  { name: "Ariel", rut: "10.389.560-k", key: "Ariel" },
+  { name: "Raul Carvajal", rut: "11.111.510-4", key: "Raul" },
+  { name: "Carlos Gutierrez", rut: "20.367.482-6", key: "Carlos" },
+  { name: "Pedro Jimenez", rut: "12.387.560-9", key: "Pedro" },
+  { name: "Osvaldo Chacon", rut: "17.877.795-1", key: "Osvaldo" },
+  { name: "Ariel Guzman", rut: "10.389.560-k", key: "Ariel" },
 ];
 export const permisos = [
   { VisChecked: false, servicio: "ENTA BAS" },
@@ -43,9 +43,7 @@ export const permisos = [
   { isChecked: false, servicio: "VENTA AUGE" },
 ];
 
-export default function ModalAbrirCaja({ isOpen, onClose }) {
-  const [textTitle] = useState("");
-
+export default function ModalAbrirCaja({ isOpen, textTitle, onClose }: any) {
   return (
     <Modal
       backdrop={"blur"}
@@ -120,9 +118,18 @@ export default function ModalAbrirCaja({ isOpen, onClose }) {
                                 <TableCell>{item.name}</TableCell>
                                 <TableCell>
                                   <div className="grid grid-cols-3 gap-4">
-                                    <FaEdit title="Editar cajero" />
-                                    <FaTrash title="Eliminar cajero" />
-                                    <FaKey title="Cambiar permisos cajero" />
+                                    <Button size="sm" title="Editar cajero">
+                                      <FaEdit />
+                                    </Button>
+                                    <Button
+                                      size="sm"
+                                      title="Cambiar permisos cajero"
+                                    >
+                                      <FaKey />
+                                    </Button>
+                                    <Button size="sm" title="Eliminar cajero">
+                                      <FaTrash />
+                                    </Button>
                                   </div>
                                 </TableCell>
                               </TableRow>
