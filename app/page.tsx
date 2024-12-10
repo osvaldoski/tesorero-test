@@ -10,8 +10,41 @@ import {
 } from "@nextui-org/modal";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
+import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
+import {
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@nextui-org/table";
 import { useState } from "react";
-import { PassThrough } from "stream";
+import ModalAbrirCaja from "./caja/ModalAbrirCaja";
+import { on } from "events";
+
+export const cajeros = [
+  { name: "Raul", rut: "11.111.510-4", key: "Raul" },
+  { name: "Carlos", rut: "20.367.482-6", key: "Carlos" },
+  { name: "Pedro", rut: "12.387.560-9", key: "Pedro" },
+  { name: "Osvaldo", rut: "17.877.795-1", key: "Osvaldo" },
+  { name: "Ariel", rut: "10.389.560-k", key: "Ariel" },
+];
+export const permisos = [
+  { VisChecked: false, servicio: "ENTA BAS" },
+  { isChecked: false, servicio: "DEV. BAS" },
+  { isChecked: false, servicio: "VALORIZA PAS" },
+  { isChecked: false, servicio: "VENTA PAS" },
+  { isChecked: false, servicio: "REEMBOLSOS" },
+  { isChecked: false, servicio: "SOL.PRESTAMOS" },
+  { isChecked: false, servicio: "AUT. PRESAMOS" },
+  { isChecked: false, servicio: "DEV. PAS" },
+  { isChecked: false, servicio: "ANULA BAS" },
+  { isChecked: false, servicio: "ENTREGAS" },
+  { isChecked: false, servicio: "PRECIERRE" },
+  { isChecked: false, servicio: "VENTA AUGE" },
+];
+
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [textTitle, setTextTitle] = useState("");
@@ -19,51 +52,34 @@ export default function Home() {
   return (
     <section className="flex flex-col">
       <div className="grid grid-cols-3 ">
-        <p className="p-5">Identificación sucursal</p>
+        <p className="p-5 font-bold">Identificación sucursal</p>
         <Input
-          type="text"
           className="p-5 pt-1"
           disabled={true}
+          type="text"
           value={"11.123.999"}
         />
         <Input
-          type="text"
           className="p-5 pt-1"
           disabled={true}
+          type="text"
           value={"sucursal prueba 1"}
         />
-        <p className="p-5">Rut supervisor</p>
+        <p className="p-5 font-bold">Rut supervisor</p>
         <Input
-          type="text"
           className="p-5 pt-1"
           disabled={true}
-          value={"19. 348.123-1"}
+          type="text"
+          value={"19.348.123-1"}
         />
         <Input
-          type="text"
           className="p-5 pt-1"
           disabled={true}
+          type="text"
           value={"Marcelo Ortiz"}
         />
       </div>
-      <div className="grid grid-cols-5 ">
-        <p className="p-5">Fecha movimiento</p>
-        <Input
-          type="text"
-          className="p-5 pt-1"
-          disabled={true}
-          value={"12/11/2024"}
-        />
-        <p className="p-5">Clave acceso</p>
-        <Input
-          type="text"
-          className="p-5 pt-1"
-          
-        />
-        <Button color="primary" variant="light"  className="p-5 ">
-          Cambiar clave
-        </Button>
-      </div>
+
       <div className="inline-block text-center justify-center p-4">
         <div className="grid grid-cols-5 gap-4">
           {[
@@ -93,51 +109,7 @@ export default function Home() {
               </Card>
             );
           })}
-          <Modal
-            isOpen={isOpen}
-            size={"5xl"}
-            onClose={onClose}
-            isDismissable={false}
-            isKeyboardDismissDisabled={true}
-            backdrop={"blur"}
-          >
-            <ModalContent>
-              {(onClose) => (
-                <>
-                  <ModalHeader className="flex flex-col gap-1">
-                    {textTitle}
-                  </ModalHeader>
-                  <ModalBody>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nullam pulvinar risus non risus hendrerit venenatis.
-                      Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nullam pulvinar risus non risus hendrerit venenatis.
-                      Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                    </p>
-                    <p>
-                      Magna exercitation reprehenderit magna aute tempor
-                      cupidatat consequat elit dolor adipisicing. Mollit dolor
-                      eiusmod sunt ex incididunt cillum quis. Velit duis sit
-                      officia eiusmod Lorem aliqua enim laboris do dolor
-                      eiusmod.
-                    </p>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="danger" variant="light" onPress={onClose}>
-                      Cerrar
-                    </Button>
-                    {/* <Button color="primary" onPress={onClose}>
-                      Action
-                    </Button> */}
-                  </ModalFooter>
-                </>
-              )}
-            </ModalContent>
-          </Modal>
+          <ModalAbrirCaja isOpen={isOpen} onClose={onClose} />
         </div>
       </div>
     </section>
