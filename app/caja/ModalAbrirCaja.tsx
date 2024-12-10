@@ -18,7 +18,6 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/table";
-import { useState } from "react";
 import { FaEdit, FaTrash, FaKey } from "react-icons/fa";
 
 export const cajeros = [
@@ -160,7 +159,10 @@ export default function ModalAbrirCaja({ isOpen, textTitle, onClose }: any) {
                         color={"default"}
                       >
                         <TableHeader>
-                          <TableColumn>Estados</TableColumn>
+                          <TableColumn>
+                            <input type="checkbox" />
+                            {" Estados"}
+                          </TableColumn>
                           <TableColumn>Descripcion</TableColumn>
                         </TableHeader>
                         <TableBody>
